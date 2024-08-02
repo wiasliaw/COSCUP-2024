@@ -2,27 +2,7 @@
 
 pragma solidity ^0.8.20;
 
-interface IStaking {
-    ////////////////////////////////////////////////////////////////////////////
-    // Functions
-    ////////////////////////////////////////////////////////////////////////////
-
-    function stake(uint256 asset) external returns (uint256);
-
-    function withdraw(uint256 share) external returns (uint256);
-
-    function convertToAsset(uint256 share) external view returns (uint256);
-
-    function convertToShare(uint256 asset) external view returns (uint256);
-
-    function totalShare() external view returns (uint256);
-
-    function totalAsset() external view returns (uint256);
-
-    function shareOf(address addr) external view returns (uint256);
-
-    function valueOf(address addr) external view returns (uint256);
-
+interface IStakeingBase {
     ////////////////////////////////////////////////////////////////////////////
     // Events
     ////////////////////////////////////////////////////////////////////////////
@@ -38,4 +18,40 @@ interface IStaking {
     error ZeroValue();
 
     error InsufficientValue();
+}
+
+interface IStaking is IStakeingBase {
+    function stake(uint256 asset) external returns (uint256);
+
+    function withdraw(uint256 share) external returns (uint256);
+
+    function convertToAsset(uint256 share) external view returns (uint256);
+
+    function convertToShare(uint256 asset) external view returns (uint256);
+
+    function totalShare() external view returns (uint256);
+
+    function totalAsset() external view returns (uint256);
+
+    function shareOf(address addr) external view returns (uint256);
+
+    function valueOf(address addr) external view returns (uint256);
+}
+
+interface IStakingETH is IStakeingBase {
+    function stake() external payable returns (uint256);
+
+    function withdraw(uint256 share) external returns (uint256);
+
+    function convertToAsset(uint256 share) external view returns (uint256);
+
+    function convertToShare(uint256 asset) external view returns (uint256);
+
+    function totalShare() external view returns (uint256);
+
+    function totalAsset() external view returns (uint256);
+
+    function shareOf(address addr) external view returns (uint256);
+
+    function valueOf(address addr) external view returns (uint256);
 }
