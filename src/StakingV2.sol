@@ -3,24 +3,7 @@
 pragma solidity ^0.8.20;
 
 import {IERC20, SafeERC20} from "../lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol";
-
-interface IStaking {
-    ////////////////////////////////////////////////////////////////////////////
-    // Events
-    ////////////////////////////////////////////////////////////////////////////
-
-    event StakedFrom(address indexed addr, uint256 amount);
-
-    event WithdrawFrom(address indexed addr, uint256 amount);
-
-    ////////////////////////////////////////////////////////////////////////////
-    // Errors
-    ////////////////////////////////////////////////////////////////////////////
-
-    error ZeroValue();
-
-    error InsufficientValue();
-}
+import {IStaking} from "./interfaces/IStaking.sol";
 
 contract StakingV1 is IStaking {
     using SafeERC20 for IERC20;
@@ -116,5 +99,13 @@ contract StakingV1 is IStaking {
 
     function valueOf(address addr) external view returns (uint256) {
         return convertToAsset(_shares[addr]);
+    }
+
+    function totalShare() external view returns (uint256) {
+        return _totalShare;
+    }
+
+    function totalAsset() external view returns (uint256) {
+        return _totalAsset;
     }
 }

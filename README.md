@@ -2,7 +2,7 @@
 
 Code snippet for "A short experience to perform Fuzzing and Formal Verification".
 
-## staking v1
+## donation attack in staking v1
 
 The exchange rate contains inflation attack.
 
@@ -31,8 +31,30 @@ forge test --mc UnitTest
 
 ## Foundry Stateless Fuzzing
 
+```bash
+forge test --mc FuzzTest
+```
+
+## Echidna Stateless Fuzzing
+
+```bash
+solc-select use 0.8.23
+echidna ./test/echidna/EchidnaTester.sol --contract EchidnaTester --test-mode assertion
+```
+
 ## Foundry Stateful Fuzzing
+
+```bash
+forge test --mc Invariant
+```
+
+## Solc Formal Verification
+
+```bash
+FOUNDRY_PROFILE=fv forge build --force
+```
 
 # Reference
 
 - https://blog.openzeppelin.com/a-novel-defense-against-erc4626-inflation-attacks
+- https://www.euler.finance/blog/exchange-rate-manipulation-in-erc4626-vaults

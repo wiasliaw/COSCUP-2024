@@ -2,9 +2,9 @@
 
 pragma solidity ^0.8.20;
 
-import "./Base.t.sol";
+import "./FoundryBase.t.sol";
 
-contract FuzzTestStakingV1 is BaseTest {
+contract FuzzTestStakingV1 is FoundryBaseTest {
     function setUp() public override {
         super.setUp();
         _prepare();
