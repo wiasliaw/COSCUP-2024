@@ -1,6 +1,7 @@
 # COSCUP - 2024
 
-Code snippet for "A short experience to perform Fuzzing and Formal Verification".
+- Code snippet for "A short experience to perform Fuzzing and Formal Verification".
+- https://docs.google.com/presentation/d/1WvHQgKbDKE2uw-FFpIMszQQTkjNiiuA9s32nE0ntMh0/edit?usp=sharing
 
 ## donation attack in staking v1
 
